@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certify | Bulk Certificate Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>✦ Certify</h2>
+        <p class="muted">CERTIFICATE STUDIO</p>
+        <nav>
+            <a class="active" href="/">▦ Dashboard</a>
+            <a href="#generator">＋ Generate certificates</a>
+        </nav>
+        <div class="sidebar-bottom">
+            <span class="status-dot"></span> Generator ready
+        </div>
+    </aside>
+
+    <main class="main">
+        <header>
+            <div>
+                <p class="eyebrow">WORKSPACE / DASHBOARD</p>
+                <h1>Certificate Studio</h1>
+                <p class="muted">Create and manage certificates in one place.</p>
+            </div>
+            <span class="pill">● System online</span>
+        </header>
+
+        <section class="stats">
+            <article class="stat-card">
+                <span>Total recipients</span>
+                <strong id="totalCount">0</strong>
+                <small>Recipients in latest job</small>
+            </article>
+            <article class="stat-card">
+                <span>Successful</span>
+                <strong id="successCount">0</strong>
+                <small>Certificates generated</small>
+            </article>
+            <article class="stat-card">
+                <span>Failed</span>
+                <strong id="failedCount">0</strong>
+                <small>Need attention</small>
+            </article>
+        </section>
+
+        <section class="panel" id="generator">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">NEW GENERATION</p>
+                    <h2>Generate certificates</h2>
+                    <p class="muted">Enter event details and recipient information.</p>
+                </div>
+                <span class="step-badge">01 / CREATE</span>
+            </div>
+
+            <form id="certificateForm">
+                <div class="form-grid">
+                    <label>
+                        Event or workshop name
+                        <input id="eventName" required maxlength="200"
+                               placeholder="e.g. Python Backend Workshop">
+                    </label>
+                    <label>
+                        Issued by
+                        <input id="issuer" required maxlength="200"
+                               placeholder="e.g. Tech Academy">
+                    </label>
+                </div>
+
+                <div class="recipient-heading">
+                    <div>
+                        <h3>Recipients</h3>
+                        <p class="muted">Add one row for each certificate.</p>
+                    </div>
+                    <button type="button" id="addRecipient" class="secondary">
+                        + Add recipient
+                    </button>
+                </div>
+
+                <div id="recipientList"></div>
+
+                <div class="form-footer">
+                    <span class="muted">Up to 1,000 recipients per job</span>
+                    <button type="submit" id="generateButton" class="primary">
+                        Generate certificates →
+                    </button>
+                </div>
+                <p id="message" role="status"></p>
+            </form>
+        </section>
+
+        <section class="panel results">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">GENERATION HISTORY</p>
+                    <h2>Latest job results</h2>
+                    <p class="muted">Check progress and download completed certificates.</p>
+                </div>
+                <span id="jobStatus" class="status-label">No job yet</span>
+            </div>
+
+            <div id="jobInfo" class="job-info">Your latest job will appear here.</div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Recipient</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Certificate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                        <tr><td colspan="4" class="empty">No certificates generated yet.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>Certify · Bulk Certificate Generator</footer>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
